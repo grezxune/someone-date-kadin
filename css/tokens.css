@@ -1,0 +1,81 @@
+/**
+ * Design tokens — "Country Club Editorial" system.
+ * Single source of truth for color, type, spacing, radius, shadow, motion.
+ * See UxStyle.md for usage rules.
+ */
+:root {
+  /* Color — palette */
+  --cream: #f6f1e4;
+  --cream-2: #efe7d2;
+  --cream-3: #e6dbc0;
+  --green: #123b2a;
+  --green-2: #0c2b1e;
+  --green-3: #1c5c40;
+  --gold: #b8923d;
+  --gold-2: #d8b563;
+  --rust: #c4552d;
+  --ink: #211f1a;
+  --ink-soft: #4c4a40;
+  --paper-line: rgba(33, 31, 26, 0.14);
+  --snap: #fffc00;
+
+  /* Color — semantic (light/default: cream sections) */
+  --bg: var(--cream);
+  --fg: var(--ink);
+  --fg-soft: var(--ink-soft);
+  --accent: var(--green);
+  --hairline: var(--paper-line);
+
+  /* Typography */
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Instrument Sans", "Helvetica Neue", sans-serif;
+  --font-hand: "Caveat", cursive;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-md: 1.25rem;
+  --text-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
+  --text-xl: clamp(2.25rem, 1.6rem + 3vw, 4rem);
+  --text-hero: clamp(2.75rem, 1.4rem + 7vw, 7.5rem);
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+  --space-7: clamp(4rem, 3rem + 6vw, 8rem);
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 26px;
+  --radius-pill: 999px;
+
+  /* Shadow */
+  --shadow-card: 0 2px 6px rgba(18, 26, 18, 0.08), 0 18px 44px rgba(18, 26, 18, 0.14);
+  --shadow-photo: 0 4px 10px rgba(18, 26, 18, 0.18), 0 26px 60px rgba(18, 26, 18, 0.28);
+  --shadow-btn: 0 3px 0 rgba(20, 20, 10, 0.9);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur-med: 420ms;
+  --dur-slow: 900ms;
+
+  /* Layout */
+  --container: 72rem;
+  --nav-h: 4.25rem;
+}
+
+/* Dark (fairway) sections invert the semantic slots */
+.theme-green {
+  --bg: var(--green);
+  --fg: var(--cream);
+  --fg-soft: rgba(246, 241, 228, 0.72);
+  --accent: var(--gold-2);
+  --hairline: rgba(246, 241, 228, 0.22);
+  background-color: var(--bg);
+  color: var(--fg);
+}

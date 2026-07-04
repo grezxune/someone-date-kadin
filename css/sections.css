@@ -1,0 +1,280 @@
+/**
+ * Sections — hero, split layouts, CTA finale, footer, responsive rules.
+ */
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  padding-block: calc(var(--nav-h) + var(--space-6)) var(--space-6);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Faint giant contour rings, like a topographic course map */
+.hero::before {
+  content: "";
+  position: absolute;
+  right: -20rem;
+  top: -14rem;
+  width: 56rem;
+  height: 56rem;
+  border-radius: 50%;
+  background:
+    repeating-radial-gradient(
+      circle at center,
+      transparent 0 68px,
+      rgba(18, 59, 42, 0.09) 68px 70px
+    );
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: var(--space-4);
+}
+
+.hero h1 {
+  font-size: var(--text-hero);
+  font-weight: 700;
+  max-width: 11ch;
+  color: var(--green-2);
+}
+
+.hero h1 .swash {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: var(--text-md);
+  color: var(--ink-soft);
+  max-width: 52ch;
+  margin-top: var(--space-4);
+}
+
+.hero-sub strong {
+  color: var(--ink);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.hero-media {
+  position: relative;
+  max-width: 23rem;
+  justify-self: end;
+  width: 100%;
+}
+
+/* Spinning seal sits in flow below the CTAs — never over the photo */
+.hero-badge {
+  margin-top: var(--space-5);
+  color: var(--green);
+}
+
+@media (max-width: 60rem) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+    align-content: start;
+  }
+
+  /* Face first on small screens */
+  .hero-media {
+    order: -1;
+    max-width: min(17rem, 72vw);
+    justify-self: start;
+    margin-top: var(--space-3);
+  }
+
+  .hero-badge {
+    display: none;
+  }
+}
+
+/* ---------- Split sections (text + photo) ---------- */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.split--flip > .split-media {
+  order: -1;
+}
+
+.split-media {
+  padding-inline: var(--space-3);
+}
+
+@media (max-width: 56rem) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .split--flip > .split-media {
+    order: 0;
+  }
+
+  .split-media {
+    max-width: 26rem;
+    justify-self: center;
+  }
+}
+
+/* ---------- Full-bleed cover (ice breakers) ---------- */
+.section--cover {
+  padding-top: 0;
+}
+
+.cover {
+  position: relative;
+  height: clamp(20rem, 58vh, 34rem);
+  overflow: hidden;
+  margin-bottom: var(--space-7);
+}
+
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(12, 43, 30, 0.65), transparent 55%);
+}
+
+.cover-caption {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 1.4rem;
+  width: min(var(--container), 100% - 2.5rem);
+  margin-inline: auto;
+  color: var(--cream);
+  font-family: var(--font-hand);
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- Scorecard section ---------- */
+.scorecard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (max-width: 56rem) {
+  .scorecard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Disclaimer section ---------- */
+.disclaimer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.disclaimer-copy {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+
+@media (max-width: 56rem) {
+  .disclaimer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .disclaimer-grid .split-media {
+    max-width: 26rem;
+  }
+}
+
+/* ---------- Finale CTA ---------- */
+.finale {
+  text-align: center;
+  overflow: hidden;
+}
+
+.finale .section-title {
+  margin-inline: auto;
+  max-width: 16ch;
+}
+
+.finale .lede {
+  margin-inline: auto;
+}
+
+.finale-actions {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.finale-snap-note {
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  color: var(--gold-2);
+}
+
+/* Flag divider ornament */
+.flag-row {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  font-size: 1.4rem;
+  letter-spacing: 0.5em;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--green-2);
+  color: rgba(246, 241, 228, 0.66);
+  padding-block: var(--space-5);
+  font-size: var(--text-sm);
+  border-top: 1px solid rgba(216, 181, 99, 0.35);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.footer a {
+  color: var(--gold-2);
+  text-decoration-color: rgba(216, 181, 99, 0.5);
+}

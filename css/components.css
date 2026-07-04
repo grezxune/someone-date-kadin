@@ -1,0 +1,568 @@
+/**
+ * Components — nav, buttons, badge, marquee, photo cards, scorecard,
+ * committee roster, fine-print card, callouts.
+ */
+
+/* ---------- Navigation ---------- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+/* Blur lives on a pseudo-element: backdrop-filter on .nav itself would
+   create a containing block and trap the fixed mobile menu inside it. */
+.nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: color-mix(in srgb, var(--cream) 88%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--green);
+}
+
+.brand-flag {
+  width: 1.4em;
+  height: 1.4em;
+  flex: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  list-style: none;
+  padding: 0;
+}
+
+.nav-links a:not(.btn-snap) {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-soft);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.nav-links a:not(.btn-snap):hover {
+  color: var(--rust);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: none;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 47.9rem) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: min(20rem, 85vw);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: var(--space-6) var(--space-5);
+    background: var(--green-2);
+    transform: translateX(100%);
+    transition: transform var(--dur-med) var(--ease-out);
+    box-shadow: -30px 0 60px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-links.is-open {
+    transform: none;
+  }
+
+  .nav-links a:not(.btn-snap) {
+    color: var(--cream);
+    font-size: var(--text-md);
+    text-transform: none;
+    font-family: var(--font-display);
+  }
+}
+
+/* ---------- Buttons ---------- */
+.btn-snap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  background: var(--snap);
+  color: #000;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--text-base);
+  text-decoration: none;
+  padding: 0.9em 1.6em;
+  border: 2px solid #000;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-btn);
+  transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.btn-snap:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 rgba(20, 20, 10, 0.9);
+}
+
+.btn-snap:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 rgba(20, 20, 10, 0.9);
+}
+
+.btn-snap svg {
+  width: 1.35em;
+  height: 1.35em;
+  flex: none;
+}
+
+.btn-snap--sm {
+  font-size: var(--text-sm);
+  padding: 0.6em 1.1em;
+}
+
+.btn-snap--lg {
+  font-size: var(--text-md);
+  padding: 1em 1.8em;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--fg);
+  padding: 1em 0.25em;
+  border-bottom: 2px solid var(--accent);
+  transition: color var(--dur-fast), border-color var(--dur-fast);
+}
+
+.btn-ghost:hover {
+  color: var(--rust);
+  border-color: var(--rust);
+}
+
+/* ---------- Rotating badge ---------- */
+.badge-spin {
+  position: relative;
+  width: clamp(7.5rem, 14vw, 10.5rem);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.badge-spin svg {
+  width: 100%;
+  height: 100%;
+  animation: spin 22s linear infinite;
+}
+
+.badge-spin .badge-core {
+  position: absolute;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+@keyframes spin {
+  to { transform: rotate(1turn); }
+}
+
+/* ---------- Ticker marquee ---------- */
+.ticker {
+  overflow: hidden;
+  border-block: 1px solid var(--gold);
+  background: var(--green-2);
+  color: var(--gold-2);
+  padding-block: 0.85rem;
+  transform: rotate(-0.5deg) scale(1.02);
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 36s linear infinite;
+}
+
+/* Two identical groups, each padded by one gap, so the -50% loop is seamless */
+.ticker-group {
+  display: flex;
+  gap: 3rem;
+  padding-right: 3rem;
+}
+
+.ticker span {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.ticker span::after {
+  content: "⛳";
+  letter-spacing: 0;
+}
+
+@keyframes ticker {
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Photo cards (polaroid) ---------- */
+.photo-card {
+  background: #fdfbf5;
+  padding: 0.9rem 0.9rem 1.1rem;
+  border-radius: 4px;
+  box-shadow: var(--shadow-photo);
+  transform: rotate(var(--tilt, -2deg));
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.photo-card:hover {
+  transform: rotate(0deg) scale(1.015);
+}
+
+.photo-card img {
+  border-radius: 2px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.photo-card figcaption {
+  font-family: var(--font-hand);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.6rem);
+  color: var(--ink-soft);
+  text-align: center;
+  padding-top: 0.9rem;
+  line-height: 1.2;
+}
+
+/* Masking-tape accent on top corners */
+.photo-card::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  translate: -50% 0;
+  width: 7rem;
+  height: 1.6rem;
+  background: color-mix(in srgb, var(--gold-2) 45%, rgba(255, 255, 255, 0.5));
+  opacity: 0.85;
+  transform: rotate(-1.5deg);
+}
+
+figure.photo-card {
+  position: relative;
+}
+
+/* ---------- Scorecard table ---------- */
+.scorecard {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fdfbf5;
+  border: 2px solid var(--green);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  font-size: var(--text-base);
+}
+
+.scorecard caption {
+  caption-side: top;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 600;
+  padding-bottom: var(--space-3);
+  color: var(--fg);
+}
+
+.scorecard th,
+.scorecard td {
+  padding: 0.9rem 1.1rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--paper-line);
+  color: var(--ink);
+}
+
+.scorecard thead th {
+  background: var(--green);
+  color: var(--cream);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.scorecard tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.scorecard tbody tr:nth-child(even) {
+  background: var(--cream);
+}
+
+.scorecard td:first-child {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.scorecard .par {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--green-3);
+  white-space: nowrap;
+}
+
+.scorecard-wrap {
+  overflow-x: auto;
+}
+
+.scorecard-wrap .scorecard {
+  min-width: 34rem;
+}
+
+/* ---------- Committee roster ---------- */
+.committee {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--hairline);
+  border-block: 1px solid var(--hairline);
+}
+
+.committee li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: 1.1rem 0.5rem;
+  background: var(--bg);
+}
+
+.committee .seat-name {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 600;
+}
+
+.committee .seat-role {
+  color: var(--fg-soft);
+}
+
+.committee .seat-vote {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+@media (max-width: 40rem) {
+  .committee li {
+    grid-template-columns: 1fr auto;
+  }
+
+  .committee .seat-role {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+}
+
+/* ---------- Fine-print / callout cards ---------- */
+.fine-print {
+  background: #fdfbf5;
+  border: 1px dashed var(--ink-soft);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  font-size: var(--text-sm);
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+
+.fine-print strong {
+  color: var(--ink);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: var(--text-xs);
+}
+
+.callout {
+  border-left: 4px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: var(--space-3) var(--space-4);
+  max-width: 52ch;
+  font-size: var(--text-base);
+}
+
+.callout .hand {
+  font-family: var(--font-hand);
+  font-size: 1.5em;
+  color: var(--fg);
+  display: block;
+  margin-top: 0.3em;
+}
+
+/* ---------- Photo arrangements ---------- */
+.photo-stack {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.scorecard-photo {
+  max-width: 20rem;
+  margin-top: var(--space-5);
+}
+
+/* Row of three staggered polaroids (talents, friends collage) */
+.polaroid-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.polaroid-row figure:nth-child(2) {
+  margin-top: var(--space-5);
+}
+
+@media (max-width: 56rem) {
+  .polaroid-row {
+    grid-template-columns: 1fr;
+    max-width: 24rem;
+    margin-inline: auto;
+  }
+
+  .polaroid-row figure:nth-child(2) {
+    margin-top: 0;
+  }
+}
+
+/* ---------- Ice-breaker cards ---------- */
+.opener-heading {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-3);
+}
+
+.breaker-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--gold);
+}
+
+.breaker-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.breaker-card {
+  background: #fdfbf5;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.breaker-card:hover {
+  transform: translateY(-4px);
+}
+
+.breaker-card .breaker-num {
+  font-size: var(--text-lg);
+  line-height: 1;
+}
+
+.breaker-card h3 {
+  font-size: var(--text-md);
+}
+
+.breaker-card p {
+  color: var(--ink-soft);
+}
+
+.breaker-photo {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center 55%;
+  border-radius: var(--radius-sm);
+}
+
+.breaker-opener {
+  margin-top: auto;
+  font-family: var(--font-hand);
+  font-size: 1.45rem;
+  line-height: 1.2;
+  color: var(--rust);
+}
+
+@media (max-width: 56rem) {
+  .breaker-cards {
+    grid-template-columns: 1fr;
+  }
+}
