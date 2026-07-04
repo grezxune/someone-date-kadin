@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-07-04 — v1.6.0
+
+- Approval committee section removed entirely per owner. Nav link replaced
+  with "The Crew" (points to the friends section); ice-breaker and finale
+  copy updated to drop committee references. Footer "Committee to Date
+  Kadin" campaign-name joke retained.
+
 ## 2026-07-04 — v1.5.0
 
 - Dedicated 1200×630 social share image (`assets/images/og-cover.jpg`),

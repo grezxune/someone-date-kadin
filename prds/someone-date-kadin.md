@@ -42,7 +42,7 @@ Success is measured in Snapchat adds and laughs per scroll.
 3. Golf section using the bar/hoodie photo — he runs 18 Birdies social media and films golf videos; the hoodie roasting golf shows self-awareness.
 4. Ice-breaker section using the fallen-tree photo — teases last summer's fishing trip where he almost died; positioned as a first-message opener, story deliberately unspoiled.
 5. Legal-style disclaimer with the baby photo — prop baby "Ashem" does NOT come with Kadin and is not his property.
-6. Approval committee roster — David (father), Sara (mother), Keston (brother), Kyla (sister), Ben (Kyla's fiancé), Tommy and Jeanna (close friends). "If this list doesn't approve — cya."
+6. ~~Approval committee roster~~ — removed entirely per owner directive 2026-07-04. Family names (David, Sara, Keston, Kyla, Ben) no longer appear on the page.
 7. Friends section with a three-photo collage of Kadin's crew (beach nights, pool league). Owner directive 2026-07-04: no Tommy self-plug copy, and the term "webmaster" is banned site-wide.
 8. Mentions of secondary hobbies: pool (billiards), guitar, singing.
 
