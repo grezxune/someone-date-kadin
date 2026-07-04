@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-07-04 — v1.5.0
+
+- Dedicated 1200×630 social share image (`assets/images/og-cover.jpg`),
+  matching the site's design system — headline, hero polaroid, and a
+  "Certified Single · Swing Included" badge. Source template lives at
+  `assets/og/og-card.html` for future edits.
+- Full Open Graph + Twitter Card meta tag set added: `og:site_name`,
+  `og:url`, `og:image` (with `secure_url`/`type`/`width`/`height`/`alt`),
+  `og:locale`, `twitter:card=summary_large_image` plus title/description/
+  image/alt, canonical link, and `theme-color`. All image/URL tags use
+  absolute production URLs (`https://someone-date-kadin.vercel.app`).
+
 ## 2026-07-04 — v1.4.1
 
 - Name corrections: Keston (brother), Sara (mother).
