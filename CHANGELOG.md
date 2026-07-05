@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-07-04 — v1.8.0
+
+- Added a surfboard/beach photo to ice breaker №4, "Board game night," per
+  owner's explicit direction (photo depicts surfing, not board games —
+  flagged before applying).
+
 ## 2026-07-04 — v1.7.2
 
 - Removed the leftover "A public service announcement" eyebrow from the
