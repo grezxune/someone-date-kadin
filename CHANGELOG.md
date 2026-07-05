@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-07-04 — v1.9.0
+
+- Added Vercel Web Analytics (no-framework script snippet, since this is a
+  plain static site with no build step/package.json). Requires enabling
+  Web Analytics for the project in the Vercel dashboard (Project → Analytics
+  → Enable) to actually start collecting data.
+
 ## 2026-07-04 — v1.8.0
 
 - Added a surfboard/beach photo to ice breaker №4, "Board game night," per
