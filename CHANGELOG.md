@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-07-04 — v1.7.2
+
+- Removed the leftover "A public service announcement" eyebrow from the
+  OG/social share image template (it was cut from the live page earlier
+  but missed in the card); image regenerated.
+
 ## 2026-07-04 — v1.7.1
 
 - Canonical domain is now someonedatekadin.com: canonical link, og:url, and
