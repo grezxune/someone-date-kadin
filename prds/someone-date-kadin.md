@@ -81,8 +81,8 @@ Success is measured in Snapchat adds and laughs per scroll.
 
 ## Open Questions
 
-- Custom domain + hosting target (Vercel? GitHub Pages?) — deploy when Tommy decides.
-- OG image should become an absolute URL once the domain exists.
+- ~~Custom domain~~ — decided: someonedatekadin.com. All meta URLs point there.
+  Pending: attach domain in Vercel (`vercel login` expired mid-session) and DNS records.
 
 ## Risks & Mitigations
 

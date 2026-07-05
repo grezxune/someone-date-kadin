@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-07-04 — v1.7.1
+
+- Canonical domain is now someonedatekadin.com: canonical link, og:url, and
+  all og/twitter image URLs updated.
+- Social share image regenerated (crisp 2× headless-Chrome render): shows
+  someonedatekadin.com instead of the vercel.app URL and the updated
+  "Someone (normal), please, date Kadin." headline; og/twitter titles and
+  alts synced to match.
+
 ## 2026-07-04 — v1.7.0
 
 - Guitar exhibit replaced with the wedding performance photo (vest, tie,
