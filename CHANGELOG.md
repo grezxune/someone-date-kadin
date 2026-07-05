@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-07-04 — v1.7.0
+
+- Guitar exhibit replaced with the wedding performance photo (vest, tie,
+  microphone); caption updated to match.
+- Blue "if golf was easy" hoodie photo removed entirely; golf section now
+  runs a single swing polaroid and the hoodie copy was rewritten.
+- Hero headline is now "Someone (normal), please, date Kadin." and the
+  "public service announcement" eyebrow line was removed.
+- Spinning seal text now uses SVG textLength so the dots space evenly
+  around the circle (no more gap after "Included").
+
 ## 2026-07-04 — v1.6.1
 
 - Vietnam summit photo (flag on the peak) added to ice breaker №3,

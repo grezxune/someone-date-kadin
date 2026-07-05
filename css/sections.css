@@ -30,15 +30,6 @@
   pointer-events: none;
 }
 
-.hero-eyebrow {
-  font-size: var(--text-sm);
-  font-weight: 700;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--rust);
-  margin-bottom: var(--space-4);
-}
-
 .hero h1 {
   font-size: var(--text-hero);
   font-weight: 700;
