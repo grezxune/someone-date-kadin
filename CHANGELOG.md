@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-07-04 — v1.6.1
+
+- Vietnam summit photo (flag on the peak) added to ice breaker №3,
+  "The long way around."
+
 ## 2026-07-04 — v1.6.0
 
 - Approval committee section removed entirely per owner. Nav link replaced
